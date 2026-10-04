@@ -31,10 +31,79 @@ Structures ───┤          │
                                         └──► Graphs
 ```
 
-### Points
-1. **Primitive** — Integer, Float, Character, Pointer (machine-operable, indivisible).
-2. **Non-Primitive** — Linear (Arrays, Linked Lists, Stacks, Queues) and
-   Non-Linear (Trees, Graphs).
+### Full Explanation — Primitive Data Structures
+
+**Primitive data structures** are the basic data types that a machine can directly
+operate on. Each one can hold only a **single value** and cannot be divided further.
+
+1. **Integer (int)** — stores whole numbers (no decimal point).
+   Example: `int age = 21;` Takes 2 or 4 bytes.
+2. **Float (float)** — stores real numbers WITH a decimal point.
+   Example: `float price = 99.75;` Takes 4 bytes, about 6 digits accuracy.
+3. **Double (double)** — same as float but with double accuracy.
+   Example: `double pi = 3.141592653589;` Takes 8 bytes. Used when high precision
+   is needed.
+4. **Character (char)** — stores ONE letter, digit or symbol inside single quotes.
+   Example: `char grade = 'A';` Takes 1 byte.
+5. **Void** — means "no value / no type". Used for functions that return nothing,
+   e.g. `void display() { ... }`.
+6. **Pointer** — a special variable that stores the ADDRESS of another variable.
+   Example: `int x = 10; int *p = &x;`
+
+### Full Explanation — Non-Primitive Data Structures
+
+**Non-primitive data structures** are derived from primitive types. They store
+**many values together** and define how the values are related to each other.
+They are divided into **Linear** and **Non-Linear**.
+
+**A) Linear Data Structures** — elements are arranged in a sequence, one after
+another. Each element has exactly one element before it and one after it
+(except the first and last).
+
+1. **Array** — a collection of SAME-type elements stored one after another in
+   continuous memory locations. Any element is accessed directly by its index.
+   Example: `int marks[5] = {90, 80, 85, 70, 95};` — `marks[0]` is 90,
+   `marks[1]` is 80, and so on. Size is fixed at creation.
+2. **Structure** — a collection of DIFFERENT-type data items grouped under one
+   name. Example: a student structure having name (char), age (int) and marks
+   (float) together.
+3. **Stack** — a LIFO (Last-In First-Out) list. Both insertion (push) and
+   deletion (pop) happen at ONE end only, called the top. Real example: a stack
+   of plates in a canteen — the last plate kept is taken out first. Used for:
+   undo feature, function calls, expression conversion.
+4. **Queue** — a FIFO (First-In First-Out) list. Insertion happens at the REAR,
+   deletion at the FRONT. Real example: a line of people at a ticket counter —
+   the first person to join is served first. Used for: printer job scheduling,
+   CPU scheduling.
+5. **Linked List** — a collection of nodes, where each node has a data part and
+   a pointer part. The pointer stores the address of the NEXT node, so the
+   elements need NOT be in continuous memory. Size grows or shrinks at run time.
+   Example: `struct node { int data; struct node *next; };`
+
+Note: a linear data structure can be stored in memory in TWO ways — using
+**arrays** (continuous locations) or using **linked lists** (connected by
+pointers).
+
+**B) Non-Linear Data Structures** — elements are NOT arranged in a sequence.
+One element can be connected to MANY elements, showing hierarchical
+(parent-child type) relationships.
+
+1. **Tree** — a hierarchical structure starting from one ROOT node at the top.
+   Every node (except the root) has exactly ONE parent but can have many
+   children. Real examples: a family tree, the folder structure of a computer
+   (C:\ → Users → Documents), an organization chart.
+2. **Graph** — a collection of VERTICES (points) connected by EDGES (lines).
+   Any vertex can connect to any other vertex — no hierarchy. Real examples:
+   Google Maps (cities = vertices, roads = edges), a social network (people =
+   vertices, friendships = edges).
+
+### Summary Table
+
+| Category | Types | How elements are arranged |
+|---|---|---|
+| Primitive | int, float, double, char, void, pointer | Single value only |
+| Non-Primitive, Linear | Array, Structure, Stack, Queue, Linked List | Sequence, one after another |
+| Non-Primitive, Non-Linear | Tree, Graph | Hierarchy or network |
 
 ### Smallest Program
 ```c
@@ -84,24 +153,52 @@ int main() {
 A sparse matrix (mostly zero elements) is represented compactly as an array of
 `<row, col, value>` triplets for its non-zero entries only.
 
-### Points
-1. Header triple: `row`=total rows, `col`=total cols, `value`=non-zero count.
-2. Transpose: swap row/col for every triple (`a[i][j] -> b[j][i]`).
+### Points (why triplet representation?)
+1. A sparse matrix has MOSTLY ZERO elements — storing all the zeros wastes a
+   lot of memory. Example: a 100 x 100 matrix with only 100 non-zero elements
+   would use 10,000 memory slots, of which 9,900 store just zero!
+2. **Triplet representation** stores ONLY the non-zero elements, using three
+   values for each: `<row, col, value>`.
+3. The header triple (row 0 of the table) stores the size: total rows, total
+   columns, and count of non-zero elements.
+4. **Transpose rule**: element `a[i][j]` becomes `b[j][i]` — i.e. the row and
+   column of every triple are SWAPPED. The value stays the same.
 
-### Example
+### Step 1 — The Given Matrix (3 x 3)
 ```
-Original matrix (3x3, non-zero entries: (0,0,15), (1,2,22), (2,1,-6)):
-row col value
-0   0   15
-1   2   22
-2   1  -6
+        col0   col1   col2
+row0 [  15      0      0  ]
+row1 [   0      0     22  ]
+row2 [   0     -6      0  ]
+```
+Only 3 elements are non-zero: 15 at (0,0), 22 at (1,2), -6 at (2,1).
 
-Transpose:
-row col value
-0   0   15
-1   2  -6
-2   1   22
+### Step 2 — Triplet Representation
 ```
+row  col  value
+ 0    0     3      <- header: 3 rows, 3 cols, 3 non-zero elements
+ 0    0    15
+ 1    2    22
+ 2    1    -6
+```
+
+### Step 3 — Transpose of the Triplet (swap row and column of each triple)
+```
+row  col  value
+ 0    0     3      <- header: now 3 cols become 3 rows (swapped)
+ 0    0    15      (was row0,col0 -> stays row0,col0)
+ 2    1    22      (was row1,col2 -> becomes row2,col1)
+ 1    2    -6      (was row2,col1 -> becomes row1,col2)
+```
+
+Check: the transpose matrix is
+```
+        col0   col1   col2
+row0 [  15      0      0  ]
+row1 [   0      0     -6  ]
+row2 [   0     22      0  ]
+```
+which matches the triplets above — so the transpose is correct.
 
 ### Program (`programs/SparseMatrixTranspose.c`)
 ```c

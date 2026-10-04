@@ -32,22 +32,99 @@ Structures ───┤          │
                                         └──► Graphs
 ```
 
-### Points
-1. **Primitive** — basic types directly operated by machine instructions;
-   cannot be divided further. Examples: Integer, Float, Character, Pointer.
-2. **Non-Primitive** — derived from primitives; further split into:
-   - **Linear** — sequence-based (Arrays via sequential memory, Linked Lists via
-     pointers). Examples: Arrays, Queues, Stacks, Linked Lists.
-   - **Non-Linear** — hierarchical relationships. Examples: Trees, Graphs.
+### Full Explanation — Primitive Data Structures
 
-### The 7 Primitive Operations
-1. **Create** — reserves memory for the structure.
-2. **Destroy** — releases allocated memory.
-3. **Selection** — accessing a particular data item.
-4. **Updating** — modifying data.
-5. **Searching** — finding a desired item.
-6. **Sorting** — arranging items in order.
-7. **Merging** — combining two sorted lists into one.
+**Primitive data structures** are the basic data types that a machine can directly
+operate on. Each one can hold only a **single value** and cannot be divided further.
+
+1. **Integer (int)** — stores whole numbers (no decimal point).
+   Example: `int age = 21;` Takes 2 or 4 bytes.
+2. **Float (float)** — stores real numbers WITH a decimal point.
+   Example: `float price = 99.75;` Takes 4 bytes, about 6 digits accuracy.
+3. **Double (double)** — same as float but with double accuracy.
+   Example: `double pi = 3.141592653589;` Takes 8 bytes. Used when high precision
+   is needed.
+4. **Character (char)** — stores ONE letter, digit or symbol inside single quotes.
+   Example: `char grade = 'A';` Takes 1 byte.
+5. **Void** — means "no value / no type". Used for functions that return nothing,
+   e.g. `void display() { ... }`.
+6. **Pointer** — a special variable that stores the ADDRESS of another variable.
+   Example: `int x = 10; int *p = &x;`
+
+### Full Explanation — Non-Primitive Data Structures
+
+**Non-primitive data structures** are derived from primitive types. They store
+**many values together** and define how the values are related to each other.
+They are divided into **Linear** and **Non-Linear**.
+
+**A) Linear Data Structures** — elements are arranged in a sequence, one after
+another. Each element has exactly one element before it and one after it
+(except the first and last).
+
+1. **Array** — a collection of SAME-type elements stored one after another in
+   continuous memory locations. Any element is accessed directly by its index.
+   Example: `int marks[5] = {90, 80, 85, 70, 95};` — `marks[0]` is 90,
+   `marks[1]` is 80, and so on. Size is fixed at creation.
+2. **Structure** — a collection of DIFFERENT-type data items grouped under one
+   name. Example: a student structure having name (char), age (int) and marks
+   (float) together.
+3. **Stack** — a LIFO (Last-In First-Out) list. Both insertion (push) and
+   deletion (pop) happen at ONE end only, called the top. Real example: a stack
+   of plates in a canteen — the last plate kept is taken out first. Used for:
+   undo feature, function calls, expression conversion.
+4. **Queue** — a FIFO (First-In First-Out) list. Insertion happens at the REAR,
+   deletion at the FRONT. Real example: a line of people at a ticket counter —
+   the first person to join is served first. Used for: printer job scheduling,
+   CPU scheduling.
+5. **Linked List** — a collection of nodes, where each node has a data part and
+   a pointer part. The pointer stores the address of the NEXT node, so the
+   elements need NOT be in continuous memory. Size grows or shrinks at run time.
+   Example: `struct node { int data; struct node *next; };`
+
+Note: a linear data structure can be stored in memory in TWO ways — using
+**arrays** (continuous locations) or using **linked lists** (connected by
+pointers).
+
+**B) Non-Linear Data Structures** — elements are NOT arranged in a sequence.
+One element can be connected to MANY elements, showing hierarchical
+(parent-child type) relationships.
+
+1. **Tree** — a hierarchical structure starting from one ROOT node at the top.
+   Every node (except the root) has exactly ONE parent but can have many
+   children. Real examples: a family tree, the folder structure of a computer
+   (C:\ → Users → Documents), an organization chart.
+2. **Graph** — a collection of VERTICES (points) connected by EDGES (lines).
+   Any vertex can connect to any other vertex — no hierarchy. Real examples:
+   Google Maps (cities = vertices, roads = edges), a social network (people =
+   vertices, friendships = edges).
+
+### Summary Table
+
+| Category | Types | How elements are arranged |
+|---|---|---|
+| Primitive | int, float, double, char, void, pointer | Single value only |
+| Non-Primitive, Linear | Array, Structure, Stack, Queue, Linked List | Sequence, one after another |
+| Non-Primitive, Non-Linear | Tree, Graph | Hierarchy or network |
+
+### The 7 Primitive Operations (each explained)
+1. **Create** — reserves memory space for the elements of the data structure.
+   This can happen at compile-time (e.g. `int a[10];`) or run-time (e.g.
+   `malloc`). The structure is created but empty.
+2. **Destroy** — releases (deletes) the memory space allocated to the data
+   structure, so the memory can be reused. In C this is done using `free()`.
+3. **Selection** — accessing a particular data item from the structure when
+   needed. Example: accessing `marks[3]` from an array.
+4. **Updating** — changing (modifying) the value of an existing data item in
+   the structure. Example: `marks[3] = 95;`
+5. **Searching** — finding out whether a given data item is present in the
+   structure, and if so, where. Example: searching for roll number 25 in a
+   student list.
+6. **Sorting** — arranging all data items of the structure in a particular
+   order (ascending or descending). Example: arranging marks from lowest to
+   highest.
+7. **Merging** — combining the data items of TWO different sorted lists into
+   ONE single sorted list. Example: merging two sorted batches of exam marks
+   into one list.
 
 ### Easiest Program
 ```c
