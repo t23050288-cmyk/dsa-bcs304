@@ -65,6 +65,32 @@ Topic files: [01-Stack-Definition-ADT-Operations.md](Module2-Stacks-Queues/01-St
 [05-Queue-Definition-Array-Representation.md](Module2-Stacks-Queues/05-Queue-Definition-Array-Representation.md) ·
 [06-Question-Mapping-Index.md](Module2-Stacks-Queues/06-Question-Mapping-Index.md)
 
+### Module 3 — Circular Queues, Multiple Stacks/Queues & Linked Lists
+
+| Format | Where |
+|---|---|
+| **Question-Answer** (each question exactly as in the IMP PDF, answer below it) | [Module3-Question-Answers/](Module3-Question-Answers/) — 8 files, one per paper |
+| **Topic-organized** (by concept, with question-mapping index) | [Module3-CircularQueues-LinkedLists/](Module3-CircularQueues-LinkedLists/) — 10 files + 9 verified C programs |
+| **Definitions Cheat Sheet** (every term, one-line summaries at the end) | [Module3-Definitions-CheatSheet.md](Module3-Definitions-CheatSheet.md) |
+
+Topic files: [01-Circular-Queues.md](Module3-CircularQueues-LinkedLists/01-Circular-Queues.md) ·
+[02-Multiple-Stacks-and-Queues.md](Module3-CircularQueues-LinkedLists/02-Multiple-Stacks-and-Queues.md) ·
+[03-Singly-Linked-Lists.md](Module3-CircularQueues-LinkedLists/03-Singly-Linked-Lists.md) ·
+[04-SLL-Additional-Operations.md](Module3-CircularQueues-LinkedLists/04-SLL-Additional-Operations.md) ·
+[05-Linked-Stacks-and-Queues.md](Module3-CircularQueues-LinkedLists/05-Linked-Stacks-and-Queues.md) ·
+[06-Polynomials-Linked-List.md](Module3-CircularQueues-LinkedLists/06-Polynomials-Linked-List.md) ·
+[07-Sparse-Matrix-Linked-Representation.md](Module3-CircularQueues-LinkedLists/07-Sparse-Matrix-Linked-Representation.md) ·
+[08-Doubly-Linked-List.md](Module3-CircularQueues-LinkedLists/08-Doubly-Linked-List.md) ·
+[09-Circular-Linked-List.md](Module3-CircularQueues-LinkedLists/09-Circular-Linked-List.md) ·
+[10-Question-Mapping-Index.md](Module3-CircularQueues-LinkedLists/10-Question-Mapping-Index.md)
+
+Covers: circular queues (why needed + operations + dynamic arrays), multiple
+stacks and queues, singly linked lists (insert/delete front and end, search,
+invert, concatenate, delete-by-value), linked stacks and queues, polynomial
+addition using linked lists, sparse matrix linked representation, doubly
+linked lists, circular linked lists. All 9 programs compiled and run with
+verified output before being added.
+
 ## Why three formats
 
 - **Question-Answer** files let you revise **by paper** — exact wording from the
