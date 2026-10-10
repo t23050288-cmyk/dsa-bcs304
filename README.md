@@ -91,6 +91,13 @@ addition using linked lists, sparse matrix linked representation, doubly
 linked lists, circular linked lists. All 9 programs compiled and run with
 verified output before being added.
 
+### DSA Assignment 1 (college assignment, 10 questions, Module 1 to 2.5)
+
+| File | Covers |
+|---|---|
+| [DSA-Assignment-1/DSA-Assignment-1.md](DSA-Assignment-1/DSA-Assignment-1.md) | Data structure classification, pointers + malloc/calloc/realloc/free, structure vs union, triplet representation, sparse matrix transpose, stack operations, infix to postfix (3 expressions with stack tables), postfix evaluation, array queue, two stacks in one array |
+| [DSA-Assignment-1/programs/](DSA-Assignment-1/programs/) | 9 C programs, all compiled and run |
+
 ## Why three formats
 
 - **Question-Answer** files let you revise **by paper** — exact wording from the
